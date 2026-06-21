@@ -1,16 +1,25 @@
 import { HomeButton } from "@/components/home/HomeButton";
 import { HomeSectionHeading } from "@/components/home/HomeSectionHeading";
+import { ScrollReveal } from "@/components/ScrollReveal";
 
 export function HomeCommunityCta() {
   return (
-    <section id="join" className="relative overflow-hidden py-18 home-red-web sm:py-24">
+    <ScrollReveal
+      as="section"
+      id="join"
+      className="relative overflow-hidden py-18 home-red-web sm:py-24"
+    >
       <div className="mx-auto max-w-[1100px] px-4 sm:px-6 lg:px-8">
         <div className="border-[4px] border-[#fc0162] bg-[#13080d] p-4 shadow-[12px_12px_0_0_rgba(252,1,98,0.12)] sm:p-6">
           <div className="relative overflow-hidden border border-white/10 px-6 py-12 text-center sm:px-10">
             <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(252,1,98,0.82),rgba(92,0,16,0.88))]" />
             <div
               className="absolute inset-0 opacity-35"
-              style={{ backgroundImage: "url('/images/cta-bg.png')", backgroundSize: "cover", backgroundPosition: "center" }}
+              style={{
+                backgroundImage: "url('/images/cta-bg.png')",
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+              }}
             />
             <div className="relative">
               <HomeSectionHeading
@@ -29,6 +38,6 @@ export function HomeCommunityCta() {
           </div>
         </div>
       </div>
-    </section>
+    </ScrollReveal>
   );
 }

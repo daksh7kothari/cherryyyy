@@ -3,6 +3,8 @@ import { HomeCommunityCta } from "@/components/home/HomeCommunityCta";
 import { HomeFooter } from "@/components/home/HomeFooter";
 import { HomeSectionHeading } from "@/components/home/HomeSectionHeading";
 import { NavBar } from "@/components/NavBar";
+import { PinkEyebrow } from "@/components/PinkEyebrow";
+import { ScrollReveal } from "@/components/ScrollReveal";
 import { HomeButton } from "@/components/home/HomeButton";
 import { endeavourDomains, techverseDomains } from "@/data/domains";
 
@@ -46,7 +48,7 @@ export function DomainPageContent() {
       <NavBar activeLabel="DOMAINS" />
 
       <section className="relative z-10 lg:hidden">
-        <div className="home-red-web py-16 sm:py-20">
+        <ScrollReveal as="div" className="home-red-web py-16 sm:py-20">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <HomeSectionHeading title="DOMAINS" accent="DOMAINS" />
             <p className="mx-auto mt-6 max-w-3xl text-center font-[family-name:var(--font-manrope)] text-sm font-semibold leading-relaxed text-[#c1c1c1] sm:text-base">
@@ -55,20 +57,20 @@ export function DomainPageContent() {
               action and talent grows with purpose.
             </p>
           </div>
-        </div>
+        </ScrollReveal>
 
         <div className="home-red-web py-18 sm:py-24">
           <div className="mx-auto max-w-7xl space-y-20 px-4 sm:px-6 lg:px-8">
-            {domainGroups.map((group) => (
-              <section key={group.id} id={group.id} className="space-y-10">
+            {domainGroups.map((group, groupIndex) => (
+              <ScrollReveal
+                key={group.id}
+                as="section"
+                id={group.id}
+                delay={groupIndex * 100}
+                className="space-y-10"
+              >
                 <div className="text-center">
-                  <div className="inline-flex items-center gap-4">
-                    <span className="hidden h-px w-20 bg-[#fc0162] sm:block" />
-                    <p className="font-[family-name:var(--font-inter)] text-sm font-black uppercase tracking-[0.24em] text-[#fc0162]">
-                      {group.title}
-                    </p>
-                    <span className="hidden h-px w-20 bg-[#fc0162] sm:block" />
-                  </div>
+                  <PinkEyebrow label={group.title} />
                 </div>
 
                 <div className="grid gap-10 lg:grid-cols-[320px_minmax(0,1fr)] lg:items-start">
@@ -96,9 +98,10 @@ export function DomainPageContent() {
                     </div>
 
                     <div className="mt-8 space-y-5">
-                      {group.items.map((item) => (
-                        <article
+                      {group.items.map((item, itemIndex) => (
+                        <ScrollReveal
                           key={item.title}
+                          delay={itemIndex * 80}
                           className="grid gap-4 sm:grid-cols-[auto_minmax(0,1fr)] sm:items-start"
                         >
                           <span className="font-[family-name:var(--font-rubik-mono)] text-[clamp(3rem,9vw,5rem)] leading-none text-[#fc0162]">
@@ -114,19 +117,19 @@ export function DomainPageContent() {
                               {item.description}
                             </p>
                           </div>
-                        </article>
+                        </ScrollReveal>
                       ))}
                     </div>
                   </div>
                 </div>
-              </section>
+              </ScrollReveal>
             ))}
           </div>
         </div>
       </section>
 
       <section className="relative z-10 hidden lg:block">
-        <div className="home-red-web">
+        <ScrollReveal as="div" className="home-red-web">
           <div className="mx-auto max-w-[1280px] pb-24 pt-[64px]">
             <div className="mx-auto max-w-[760px] text-center">
               <h1 className="font-[family-name:var(--font-inter)] text-[128px] font-black uppercase leading-[0.88] text-[#ff0d62] drop-shadow-[0_12px_0_rgba(0,0,0,0.35)]">
@@ -151,7 +154,7 @@ export function DomainPageContent() {
 
             <div className="mx-auto mt-[38px] grid max-w-[984px] grid-cols-2 gap-[90px]">
               {posterGroups.map((group, index) => (
-                <div key={group.id} className="w-full">
+                <ScrollReveal key={group.id} delay={index * 120} className="w-full">
                   <div className="overflow-hidden border-[5px] border-black bg-black shadow-[16px_16px_0_0_rgba(0,0,0,0.35)]">
                     <Image
                       src={group.posterSrc}
@@ -162,25 +165,33 @@ export function DomainPageContent() {
                       priority={index === 0}
                     />
                   </div>
-                </div>
+                </ScrollReveal>
               ))}
             </div>
 
             <div className="mt-[128px] space-y-[96px]">
-              {domainGroups.map((group) => (
-                <section key={`${group.id}-desktop`} id={group.id} className="space-y-[64px]">
+              {domainGroups.map((group, groupIndex) => (
+                <ScrollReveal
+                  key={`${group.id}-desktop`}
+                  as="section"
+                  id={group.id}
+                  delay={groupIndex * 100}
+                  className="space-y-[64px]"
+                >
                   <DesktopSectionBanner title={group.title} description={group.description} />
 
                   <div className="space-y-[42px]">
                     {group.items.map((item, index) => (
-                      <DesktopDomainRow key={item.title} item={item} index={index} />
+                      <ScrollReveal key={item.title} delay={index * 80}>
+                        <DesktopDomainRow item={item} index={index} />
+                      </ScrollReveal>
                     ))}
                   </div>
-                </section>
+                </ScrollReveal>
               ))}
             </div>
           </div>
-        </div>
+        </ScrollReveal>
       </section>
 
       <HomeCommunityCta />

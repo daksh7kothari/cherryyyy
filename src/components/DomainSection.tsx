@@ -2,8 +2,8 @@
 
 import Image from "next/image";
 import { DomainBlock } from "@/components/DomainBlock";
+import { ScrollReveal } from "@/components/ScrollReveal";
 import type { DomainItem } from "@/data/domains";
-import { useEffect, useRef, useState } from "react";
 
 type DomainSectionProps = {
   id: string;
@@ -18,38 +18,14 @@ export function DomainSection({
   description,
   domains,
 }: DomainSectionProps) {
-  const ref = useRef<HTMLElement>(null);
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    const node = ref.current;
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          observer.unobserve(entry.target);
-        }
-      },
-      {
-        threshold: 0.1,
-      }
-    );
-
-    if (node) {
-      observer.observe(node);
-    }
-
-    return () => {
-      if (node) {
-        observer.unobserve(node);
-      }
-    };
-  }, []);
-
   return (
-    <section ref={ref} id={id} className={`relative overflow-hidden px-4 py-12 sm:px-6 sm:py-16 lg:px-8 scroll-reveal ${isVisible ? "visible" : ""}`}>
+    <ScrollReveal
+      as="section"
+      id={id}
+      className="relative overflow-hidden px-4 py-12 sm:px-6 sm:py-16 lg:px-8"
+    >
       <div className="pointer-events-none absolute inset-0 spiderweb-bg opacity-60" />
-      
+
       <div className="relative mx-auto max-w-7xl">
         <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] lg:items-start lg:gap-10">
           <div className="relative w-fit max-w-full">
@@ -80,6 +56,6 @@ export function DomainSection({
           ))}
         </div>
       </div>
-    </section>
+    </ScrollReveal>
   );
 }

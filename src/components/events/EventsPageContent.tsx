@@ -1,6 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { NavBar } from "@/components/NavBar";
+import { PinkEyebrow } from "@/components/PinkEyebrow";
+import { ScrollReveal } from "@/components/ScrollReveal";
 import { EventCard } from "@/components/events/EventCard";
 import { PreviousEventFeature } from "@/components/events/PreviousEventFeature";
 import { HomeFooter } from "@/components/home/HomeFooter";
@@ -12,7 +14,7 @@ export function EventsPageContent() {
     <main className="min-h-screen bg-[#0b0b0b] text-white">
       <NavBar activeLabel="EVENTS" />
 
-      <section className="home-red-web py-16 sm:py-20">
+      <ScrollReveal as="section" className="home-red-web py-16 sm:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <HomeSectionHeading title="EVENTS" accent="EVENTS" />
           <p className="mx-auto mt-6 max-w-3xl text-center font-[family-name:var(--font-manrope)] text-sm font-medium leading-relaxed text-[#c1c1c1] sm:text-base">
@@ -24,17 +26,18 @@ export function EventsPageContent() {
 
           <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
             {featuredEvents.map((event, index) => (
-              <EventCard
-                key={event.id}
-                event={event}
-                tilt={index % 2 === 0 ? "left" : "right"}
-              />
+              <ScrollReveal key={event.id} delay={index * 80}>
+                <EventCard
+                  event={event}
+                  tilt={index % 2 === 0 ? "left" : "right"}
+                />
+              </ScrollReveal>
             ))}
           </div>
         </div>
-      </section>
+      </ScrollReveal>
 
-      <section className="home-red-web py-18 sm:py-24">
+      <ScrollReveal as="section" className="home-red-web py-18 sm:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <HomeSectionHeading
             eyebrow="Archive"
@@ -43,16 +46,10 @@ export function EventsPageContent() {
           />
 
           <div className="mt-14 space-y-16">
-            {previousEventGroups.map((group) => (
-              <section key={group.id} className="space-y-8">
+            {previousEventGroups.map((group, groupIndex) => (
+              <ScrollReveal key={group.id} delay={groupIndex * 100} as="section" className="space-y-8">
                 <div className="text-center lg:text-left">
-                  <div className="inline-flex items-center gap-4">
-                    <span className="hidden h-px w-20 bg-[#fc0162] sm:block" />
-                    <p className="font-[family-name:var(--font-inter)] text-xl font-black uppercase tracking-[0.16em] text-[#fc0162]">
-                      {group.title}
-                    </p>
-                    <span className="hidden h-px w-20 bg-[#fc0162] sm:block" />
-                  </div>
+                  <PinkEyebrow label={group.title} size="lg" />
                   <p className="mx-auto mt-4 max-w-3xl font-[family-name:var(--font-manrope)] text-sm leading-relaxed text-[#d6d6d6] lg:mx-0">
                     {group.intro}
                   </p>
@@ -60,18 +57,19 @@ export function EventsPageContent() {
 
                 <div className="space-y-12">
                   {group.events.map((event, index) => (
-                    <PreviousEventFeature
-                      key={event.id}
-                      event={event}
-                      reverse={index % 2 === 1}
-                    />
+                    <ScrollReveal key={event.id} delay={index * 90}>
+                      <PreviousEventFeature
+                        event={event}
+                        reverse={index % 2 === 1}
+                      />
+                    </ScrollReveal>
                   ))}
                 </div>
-              </section>
+              </ScrollReveal>
             ))}
           </div>
 
-          <div className="mt-18">
+          <ScrollReveal className="mt-18">
             <HomeSectionHeading
               eyebrow="Pick your universe"
               title="PICK YOUR UNIVERSE"
@@ -80,7 +78,7 @@ export function EventsPageContent() {
             <div className="mt-8 grid gap-6 sm:grid-cols-2">
               <Link
                 href="/domains#techverse"
-                className="block overflow-hidden border-[3px] border-black bg-white"
+                className="block overflow-hidden border-[3px] border-black bg-white transition-transform duration-300 hover:-translate-y-1"
               >
                 <Image
                   src="/images/techverse-card.png"
@@ -92,7 +90,7 @@ export function EventsPageContent() {
               </Link>
               <Link
                 href="/domains#endeavour"
-                className="block overflow-hidden border-[3px] border-black bg-white"
+                className="block overflow-hidden border-[3px] border-black bg-white transition-transform duration-300 hover:-translate-y-1"
               >
                 <Image
                   src="/images/endeavour-card.png"
@@ -103,9 +101,9 @@ export function EventsPageContent() {
                 />
               </Link>
             </div>
-          </div>
+          </ScrollReveal>
         </div>
-      </section>
+      </ScrollReveal>
 
       <HomeFooter />
     </main>

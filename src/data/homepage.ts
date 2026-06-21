@@ -1,11 +1,6 @@
 import { endeavourDomains, techverseDomains } from "@/data/domains";
 
-export const heroMarqueeItems = [
-  "upcoming events",
-  "skill-building sprints",
-  "community hangouts",
-  "creative showcases",
-];
+export const heroMarqueeItems = ["upcoming events"];
 
 export const visionMissionCards = [
   {
@@ -128,17 +123,17 @@ export const activityCards = [
 export const communityStats = [
   {
     value: "200+",
-    label: "Achievements",
+    label: "Members",
     icon: "spark",
   },
   {
     value: "10+",
-    label: "Events",
+    label: "Days",
     icon: "star",
   },
   {
     value: "100%",
-    label: "Fun Atmosphere",
+    label: "Fun",
     icon: "heart",
   },
 ] as const;

@@ -1,8 +1,8 @@
 "use client";
 
 import Image from "next/image";
+import { ScrollReveal } from "@/components/ScrollReveal";
 import type { DomainItem } from "@/data/domains";
-import { useEffect, useRef, useState } from "react";
 
 function SlantTitle({ title, align }: { title: string; align: "left" | "right" }) {
   return (
@@ -40,36 +40,9 @@ function DomainNumber({ number }: { number: string }) {
 
 export function DomainBlock({ domain }: { domain: DomainItem }) {
   const isRight = domain.align === "right";
-  const ref = useRef<HTMLElement>(null);
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    const node = ref.current;
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          observer.unobserve(entry.target);
-        }
-      },
-      {
-        threshold: 0.1,
-      }
-    );
-
-    if (node) {
-      observer.observe(node);
-    }
-
-    return () => {
-      if (node) {
-        observer.unobserve(node);
-      }
-    };
-  }, []);
 
   return (
-    <article ref={ref} className={`space-y-4 scroll-reveal ${isVisible ? "visible" : ""}`}>
+    <ScrollReveal as="article" className="space-y-4">
       <SlantTitle title={domain.title} align={domain.align} />
 
       <div
@@ -80,8 +53,7 @@ export function DomainBlock({ domain }: { domain: DomainItem }) {
         <div className="shrink-0">
           <DomainNumber number={domain.number} />
         </div>
-        
-        {/* Decorative image between number and text */}
+
         <div className="hidden sm:block shrink-0 h-16 w-16">
           <div className="relative h-full w-full">
             <Image
@@ -100,6 +72,6 @@ export function DomainBlock({ domain }: { domain: DomainItem }) {
           </p>
         </div>
       </div>
-    </article>
+    </ScrollReveal>
   );
 }

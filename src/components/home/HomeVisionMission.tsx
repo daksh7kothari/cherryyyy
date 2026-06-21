@@ -1,9 +1,10 @@
 import { HomeSectionHeading } from "@/components/home/HomeSectionHeading";
+import { ScrollReveal } from "@/components/ScrollReveal";
 import { visionMissionCards } from "@/data/homepage";
 
 export function HomeVisionMission() {
   return (
-    <section className="relative overflow-hidden py-18 home-red-web sm:py-24">
+    <ScrollReveal as="section" className="relative overflow-hidden py-18 home-red-web sm:py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <HomeSectionHeading
           eyebrow="About us"
@@ -13,8 +14,9 @@ export function HomeVisionMission() {
 
         <div className="mt-14 grid gap-8 lg:grid-cols-2">
           {visionMissionCards.map((card, index) => (
-            <article
+            <ScrollReveal
               key={card.title}
+              delay={index * 120}
               className={`relative border-[3px] border-[#fc0139] bg-[#0b0b0b] p-4 shadow-[10px_10px_0_0_rgba(0,0,0,0.35)] ${index === 0 ? "lg:-rotate-2" : "lg:rotate-2"}`}
             >
               <span className="absolute left-1/2 top-0 h-4 w-24 -translate-x-1/2 -translate-y-1/2 rotate-[-10deg] bg-[#e9d8a6] shadow-[0_4px_0_0_rgba(0,0,0,0.28)]" />
@@ -31,11 +33,11 @@ export function HomeVisionMission() {
                   {card.description}
                 </p>
               </div>
-            </article>
+            </ScrollReveal>
           ))}
         </div>
       </div>
-    </section>
+    </ScrollReveal>
   );
 }
 

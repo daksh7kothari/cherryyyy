@@ -1,10 +1,13 @@
 import { HomeSectionHeading } from "@/components/home/HomeSectionHeading";
+import { ScrollReveal } from "@/components/ScrollReveal";
+import { SmokeLayer } from "@/components/SmokeLayer";
 import { journeyMilestones } from "@/data/homepage";
 
 export function HomeJourney() {
   return (
-    <section className="relative overflow-hidden py-18 home-red-web sm:py-24">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <ScrollReveal as="section" className="relative overflow-hidden py-18 home-red-web sm:py-24">
+      <SmokeLayer variant="ambient" />
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <HomeSectionHeading
           eyebrow="Milestones"
           title="OUR JOURNEY"
@@ -12,9 +15,10 @@ export function HomeJourney() {
         />
 
         <div className="mt-12 grid gap-5 md:grid-cols-3">
-          {journeyMilestones.map((item) => (
-            <article
+          {journeyMilestones.map((item, index) => (
+            <ScrollReveal
               key={item.year}
+              delay={index * 100}
               className="border border-[#fc0162] bg-[#111111]/90 p-5 shadow-[8px_8px_0_0_rgba(252,1,98,0.15)]"
             >
               <div className="flex items-center justify-between gap-4">
@@ -29,10 +33,10 @@ export function HomeJourney() {
               <p className="mt-3 font-[family-name:var(--font-manrope)] text-sm leading-relaxed text-[#cfcfcf]">
                 {item.description}
               </p>
-            </article>
+            </ScrollReveal>
           ))}
         </div>
       </div>
-    </section>
+    </ScrollReveal>
   );
 }

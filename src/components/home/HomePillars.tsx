@@ -1,11 +1,16 @@
 import Image from "next/image";
 import { HomeButton } from "@/components/home/HomeButton";
 import { HomeSectionHeading } from "@/components/home/HomeSectionHeading";
+import { ScrollReveal } from "@/components/ScrollReveal";
 import { pillarSections } from "@/data/homepage";
 
 export function HomePillars() {
   return (
-    <section id="domains" className="relative overflow-hidden py-18 home-red-web sm:py-24">
+    <ScrollReveal
+      as="section"
+      id="domains"
+      className="relative overflow-hidden py-18 home-red-web sm:py-24"
+    >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <HomeSectionHeading
           eyebrow="Universes"
@@ -14,7 +19,7 @@ export function HomePillars() {
         />
 
         <div className="mt-14 space-y-10">
-          {pillarSections.map((pillar) => {
+          {pillarSections.map((pillar, index) => {
             const panelClasses =
               pillar.accent === "techverse"
                 ? "border-[#1777ff] bg-[#0b0f16]"
@@ -29,8 +34,9 @@ export function HomePillars() {
                 : "bg-[#fff27c] text-[#221800]";
 
             return (
-              <article
+              <ScrollReveal
                 key={pillar.id}
+                delay={index * 120}
                 className="grid gap-5 lg:grid-cols-[340px_minmax(0,1fr)] lg:items-stretch"
               >
                 <div className="relative overflow-hidden border-[3px] border-black bg-white">
@@ -48,11 +54,15 @@ export function HomePillars() {
                 </div>
 
                 <div className={`border-[3px] p-5 sm:p-7 ${panelClasses}`}>
-                  <div className={`inline-flex px-3 py-1 font-[family-name:var(--font-inter)] text-[10px] font-black uppercase tracking-[0.22em] ${bannerClasses}`}>
+                  <div
+                    className={`inline-flex px-3 py-1 font-[family-name:var(--font-inter)] text-[10px] font-black uppercase tracking-[0.22em] ${bannerClasses}`}
+                  >
                     {pillar.accent === "techverse" ? "Technology-led" : "Leadership-led"}
                   </div>
 
-                  <h3 className={`mt-5 font-[family-name:var(--font-inter)] text-[clamp(2rem,6vw,3.5rem)] font-black uppercase leading-none ${titleClasses}`}>
+                  <h3
+                    className={`mt-5 font-[family-name:var(--font-inter)] text-[clamp(2rem,6vw,3.5rem)] font-black uppercase leading-none ${titleClasses}`}
+                  >
                     {pillar.title}
                   </h3>
 
@@ -80,11 +90,11 @@ export function HomePillars() {
                     />
                   </div>
                 </div>
-              </article>
+              </ScrollReveal>
             );
           })}
         </div>
       </div>
-    </section>
+    </ScrollReveal>
   );
 }

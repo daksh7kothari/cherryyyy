@@ -1,10 +1,13 @@
 import { HomeSectionHeading } from "@/components/home/HomeSectionHeading";
+import { ScrollReveal } from "@/components/ScrollReveal";
+import { SmokeLayer } from "@/components/SmokeLayer";
 import { communityStats } from "@/data/homepage";
 
 export function HomeStats() {
   return (
-    <section className="relative overflow-hidden py-18 home-red-web sm:py-24">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+    <ScrollReveal as="section" className="relative overflow-hidden py-18 home-red-web sm:py-24">
+      <SmokeLayer variant="ambient" />
+      <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <HomeSectionHeading
           eyebrow="Built together"
           title="BUILT BY STUDENTS, FOR STUDENTS"
@@ -12,9 +15,10 @@ export function HomeStats() {
         />
 
         <div className="mt-12 grid gap-5 md:grid-cols-3">
-          {communityStats.map((stat) => (
-            <article
+          {communityStats.map((stat, index) => (
+            <ScrollReveal
               key={stat.label}
+              delay={index * 100}
               className="border border-[#fc0162] bg-[#121212]/95 px-6 py-7 text-center shadow-[8px_8px_0_0_rgba(252,1,98,0.16)]"
             >
               <div className="mx-auto flex h-10 w-10 items-center justify-center text-white">
@@ -26,11 +30,11 @@ export function HomeStats() {
               <p className="mt-2 font-[family-name:var(--font-manrope)] text-sm font-semibold uppercase tracking-[0.18em] text-white/80">
                 {stat.label}
               </p>
-            </article>
+            </ScrollReveal>
           ))}
         </div>
       </div>
-    </section>
+    </ScrollReveal>
   );
 }
 
