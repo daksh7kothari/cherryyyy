@@ -117,3 +117,51 @@ body {
   opacity: 1;
   transform: translateY(0);
 }
+
+.home-text-stroke {
+  -webkit-text-stroke-color: #ffffff;
+}
+
+.home-red-web {
+  background-color: #0b0b0b;
+  background-image:
+    linear-gradient(180deg, rgba(11, 11, 11, 0.92) 0%, rgba(11, 11, 11, 0.98) 100%),
+    url("/images/hero-bg.png.png");
+  background-position: center;
+  background-repeat: repeat;
+  background-size: 780px;
+}
+
+.home-hero-burst {
+  background-color: #120406;
+  background-image:
+    linear-gradient(180deg, rgba(11, 11, 11, 0.18) 0%, rgba(11, 11, 11, 0.78) 85%),
+    radial-gradient(circle at center, rgba(252, 1, 98, 0.18), transparent 32%),
+    linear-gradient(160deg, rgba(252, 1, 57, 0.3), transparent 50%),
+    url("/images/hero-bg.png.png");
+  background-size: auto, auto, auto, cover;
+  background-position: center;
+}
+
+.home-marquee-track {
+  animation: home-marquee-scroll 18s linear infinite;
+}
+
+.home-card-web {
+  background-image:
+    linear-gradient(180deg, rgba(11, 11, 11, 0.05), rgba(11, 11, 11, 0.15)),
+    url("/images/hero-bg.png.png");
+  background-position: center;
+  background-repeat: repeat;
+  background-size: 720px;
+}
+
+@keyframes home-marquee-scroll {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}

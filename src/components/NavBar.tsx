@@ -17,12 +17,12 @@ export function NavBar({ activeLabel }: NavBarProps) {
   const resolvedActive =
     activeLabel ??
     navLinks.find((link) => link.href === pathname)?.label ??
-    (pathname === "/" ? "DOMAINS" : undefined);
+    (pathname === "/" ? "HOME" : undefined);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-white/5 bg-[#0b0b0b]/95 backdrop-blur-md">
-      <div className="mx-auto flex h-[72px] max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-        <Link href="/" className="relative h-9 w-[140px] shrink-0 sm:h-10 sm:w-[160px]">
+    <header className="sticky top-0 z-50 border-b-[5px] border-[#fc0162] bg-[#0b0b0b]/95 backdrop-blur-md">
+      <div className="mx-auto flex min-h-[84px] max-w-7xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
+        <Link href="/" className="relative h-10 w-[150px] shrink-0 sm:h-11 sm:w-[180px]">
           <Image
             src="/images/logo-full.png"
             alt="Cherry+ Network"
@@ -32,7 +32,7 @@ export function NavBar({ activeLabel }: NavBarProps) {
           />
         </Link>
 
-        <nav className="hidden items-center gap-6 lg:flex xl:gap-8">
+        <nav className="hidden items-center gap-7 lg:flex">
           {navLinks.map((link) => {
             const isActive = link.label === resolvedActive;
 
@@ -40,10 +40,10 @@ export function NavBar({ activeLabel }: NavBarProps) {
               <Link
                 key={link.label}
                 href={link.href}
-                className={`relative font-[family-name:var(--font-inter)] text-[13px] font-black tracking-wide transition-colors ${
+                className={`relative font-[family-name:var(--font-inter)] text-[13px] font-black uppercase tracking-[0.14em] transition-colors ${
                   isActive
-                    ? "text-[#dc143c] after:absolute after:-bottom-2 after:left-0 after:h-0.5 after:w-full after:bg-[#dc143c]"
-                    : "text-white hover:text-[#dc143c]"
+                    ? "text-[#fc0162] after:absolute after:-bottom-3 after:left-0 after:h-0.5 after:w-full after:bg-[#fc0162]"
+                    : "text-[#dedede] hover:text-white"
                 }`}
               >
                 {link.label}
@@ -55,7 +55,7 @@ export function NavBar({ activeLabel }: NavBarProps) {
         <div className="flex items-center gap-3">
           <Link
             href="/#join"
-            className="hidden rounded-md bg-[#dc143c] px-4 py-2 font-[family-name:var(--font-inter)] text-sm font-black tracking-wide text-white transition hover:bg-[#b81032] sm:inline-flex"
+            className="hidden border-[3px] border-[#fc0162] bg-[linear-gradient(180deg,#fc0162_0%,#fc0139_100%)] px-4 py-2 font-[family-name:var(--font-inter)] text-[11px] font-black uppercase tracking-[0.18em] text-white shadow-[6px_6px_0_0_rgba(0,0,0,0.35)] transition-transform duration-200 hover:-translate-y-0.5 sm:inline-flex"
           >
             JOIN NOW
           </Link>
@@ -65,7 +65,7 @@ export function NavBar({ activeLabel }: NavBarProps) {
             aria-label="Toggle menu"
             aria-expanded={open}
             onClick={() => setOpen((prev) => !prev)}
-            className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-white/10 lg:hidden"
+            className="inline-flex h-11 w-11 items-center justify-center border-2 border-white/20 text-white lg:hidden"
           >
             <span className="sr-only">Menu</span>
             <div className="flex flex-col gap-1.5">
@@ -84,7 +84,7 @@ export function NavBar({ activeLabel }: NavBarProps) {
       </div>
 
       {open && (
-        <div className="border-t border-white/5 bg-[#0b0b0b] px-4 py-4 lg:hidden">
+        <div className="border-t border-white/10 bg-[#0b0b0b] px-4 py-4 lg:hidden">
           <nav className="flex flex-col gap-3">
             {navLinks.map((link) => {
               const isActive = link.label === resolvedActive;
@@ -94,8 +94,8 @@ export function NavBar({ activeLabel }: NavBarProps) {
                   key={link.label}
                   href={link.href}
                   onClick={() => setOpen(false)}
-                  className={`font-[family-name:var(--font-inter)] text-sm font-black ${
-                    isActive ? "text-[#dc143c]" : "text-white"
+                  className={`font-[family-name:var(--font-inter)] text-sm font-black uppercase tracking-[0.16em] ${
+                    isActive ? "text-[#fc0162]" : "text-[#dedede]"
                   }`}
                 >
                   {link.label}
@@ -105,7 +105,7 @@ export function NavBar({ activeLabel }: NavBarProps) {
             <Link
               href="/#join"
               onClick={() => setOpen(false)}
-              className="mt-2 inline-flex w-fit rounded-md bg-[#dc143c] px-4 py-2 font-[family-name:var(--font-inter)] text-sm font-black text-white"
+              className="mt-2 inline-flex w-full justify-center border-[3px] border-[#fc0162] bg-[linear-gradient(180deg,#fc0162_0%,#fc0139_100%)] px-4 py-3 font-[family-name:var(--font-inter)] text-sm font-black uppercase tracking-[0.16em] text-white"
             >
               JOIN NOW
             </Link>

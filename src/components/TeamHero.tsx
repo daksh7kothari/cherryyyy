@@ -1,5 +1,3 @@
-import Image from "next/image";
-
 export function TeamHero() {
   return (
     <section className="relative overflow-hidden spiderweb-bg">
