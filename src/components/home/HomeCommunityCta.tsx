@@ -4,7 +4,7 @@ import { HomeSectionHeading } from "@/components/home/HomeSectionHeading";
 export function HomeCommunityCta() {
   return (
     <section id="join" className="relative overflow-hidden py-18 home-red-web sm:py-24">
-      <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-[1100px] px-4 sm:px-6 lg:px-8">
         <div className="border-[4px] border-[#fc0162] bg-[#13080d] p-4 shadow-[12px_12px_0_0_rgba(252,1,98,0.12)] sm:p-6">
           <div className="relative overflow-hidden border border-white/10 px-6 py-12 text-center sm:px-10">
             <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(252,1,98,0.82),rgba(92,0,16,0.88))]" />
@@ -27,10 +27,6 @@ export function HomeCommunityCta() {
               </div>
             </div>
           </div>
-        </div>
-
-        <div className="mt-6 flex justify-center">
-          <HomeButton href="#top" label="Travel Home" variant="secondary" className="px-6 py-2 text-[11px]" />
         </div>
       </div>
     </section>
