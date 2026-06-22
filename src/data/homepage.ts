@@ -123,17 +123,17 @@ export const activityCards = [
 export const communityStats = [
   {
     value: "200+",
-    label: "Members",
-    icon: "spark",
+    label: "Active Members",
+    icon: "people",
   },
   {
     value: "10+",
-    label: "Days",
-    icon: "star",
+    label: "Events",
+    icon: "extension",
   },
   {
     value: "100%",
-    label: "Fun",
+    label: "Fun and Satisfaction",
     icon: "heart",
   },
 ] as const;

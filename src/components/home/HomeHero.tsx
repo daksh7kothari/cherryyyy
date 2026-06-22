@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { HomeButton } from "@/components/home/HomeButton";
+import Link from "next/link";
 import { SmokeLayer } from "@/components/SmokeLayer";
 import { heroMarqueeItems } from "@/data/homepage";
 
@@ -13,7 +13,7 @@ export function HomeHero() {
   return (
     <section
       id="top"
-      className="relative overflow-hidden border border-[#fc0162]/35 bg-[#120406] min-h-[min(100vh,820px)]"
+      className="relative overflow-hidden border border-[#fc0162]/35 bg-[#120406] min-h-[100vh]"
     >
       <div className="absolute inset-0" aria-hidden>
         <Image
@@ -21,17 +21,17 @@ export function HomeHero() {
           alt=""
           fill
           className="object-cover opacity-30"
-          sizes="100vw"
+          
           priority
         />
         <div className="absolute inset-0 bg-gradient-to-b from-[#0b0b0b]/10 via-transparent to-[#0b0b0b]/75" />
       </div>
 
-      <SmokeLayer variant="hero" />
+      {/* <SmokeLayer variant="hero" /> */}
 
       <div className="relative z-10 mx-auto max-w-7xl px-4 pb-18 pt-6 sm:px-6 sm:pb-24 lg:px-8 lg:pb-28 lg:pt-10">
-        <div className="mx-auto flex max-w-[451px] items-center gap-3 border border-[#dc143c]/50 bg-[#0b0b0b] px-3 py-2 sm:px-4">
-          <span className="inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-[#fc0162] text-[11px] font-black text-white">
+        <div className="mx-auto flex h-10 max-w-[451px] items-center gap-3 border border-[#dc143c]/50 bg-[#0b0b0b] px-3">
+          <span className="inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#fc0162] text-[11px] font-extrabold text-white">
             i
           </span>
           <div className="relative overflow-hidden">
@@ -39,10 +39,10 @@ export function HomeHero() {
               {repeatedItems.map((item, index) => (
                 <div
                   key={`${item}-${index}`}
-                  className="flex items-center gap-6 font-[family-name:var(--font-inter)] text-[11px] font-normal uppercase tracking-[0.24em] text-white sm:text-xs"
+                  className="flex items-center gap-6 font-[family-name:var(--font-inter)] text-sm font-normal lowercase tracking-wide text-white"
                 >
                   <span>{item}</span>
-                  <span className="h-2.5 w-2.5 rounded-full bg-[#fc0162]" />
+                  <span className="h-2 w-2 rounded-full bg-[#fc0162] shrink-0" />
                 </div>
               ))}
             </div>
@@ -66,19 +66,24 @@ export function HomeHero() {
           </p>
 
           <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <HomeButton href="#join" label="Join Cherry+ Network" />
-            <HomeButton href="/domains" label="Explore Universes" variant="secondary" />
+            <Link
+              href="#join"
+              className="inline-flex h-[41px] w-[214px] items-center justify-center border-4 border-[#fc0162] bg-[linear-gradient(180deg,#fc0162_0%,#fc0139_100%)] font-[family-name:var(--font-inter)] text-base font-black text-white shadow-[6px_6px_0_0_rgba(0,0,0,0.35)] transition-transform duration-200 hover:-translate-y-0.5"
+            >
+              Join Cherry+ Network
+            </Link>
+            <Link
+              href="/domains"
+              className="inline-flex h-[41px] w-[214px] items-center justify-center border-4 border-white bg-transparent font-[family-name:var(--font-inter)] text-base font-black text-white shadow-[6px_6px_0_0_rgba(252,1,98,0.18)] transition-transform duration-200 hover:-translate-y-0.5"
+            >
+              Explore Universes
+            </Link>
           </div>
         </div>
 
         <div className="mt-10 flex justify-center">
-          <div className="flex flex-col items-center text-white/75">
-            <div className="flex h-12 w-7 items-start justify-center rounded-full border-2 border-[#fc0162]/60 p-1.5">
-              <span className="h-3 w-2 animate-bounce rounded-full bg-[#fc0162]" />
-            </div>
-            <span className="mt-3 text-[10px] font-black uppercase tracking-[0.3em] text-white/60">
-              Scroll
-            </span>
+          <div className="flex h-12 w-7 items-start justify-center rounded-full border-2 border-[#fc0162]/60 p-1.5">
+            <span className="h-3 w-2 animate-bounce rounded-full bg-[#fc0162]" />
           </div>
         </div>
       </div>
